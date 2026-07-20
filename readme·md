@@ -1,0 +1,53 @@
+# dawud035bot
+
+A Telegram bot with:
+- 🔗 URL shortener (`/shorten <url>`)
+- 🖼 Image compression (auto, on photo upload)
+- 🔄 Image format conversion (`/convert jpg|png|webp`)
+
+## 1. Create your bot on Telegram
+
+1. Open Telegram, search for **@BotFather**.
+2. Send `/newbot`.
+3. Choose a display name, then set the username to `dawud035bot`.
+4. BotFather gives you a **token** like `123456789:ABCdefGhIJKlmNoPQRstuVWXyz`. Copy it — you'll need it in step 3.
+
+## 2. Push this code to GitHub
+
+```bash
+cd dawud035bot
+git init
+git add .
+git commit -m "Initial commit - dawud035bot"
+git branch -M main
+git remote add origin https://github.com/<your-username>/dawud035bot.git
+git push -u origin main
+```
+
+(Create the empty repo on GitHub first at https://github.com/new — name it `dawud035bot`.)
+
+## 3. Deploy on Railway
+
+1. Go to https://railway.app and log in (GitHub login is easiest).
+2. Click **New Project → Deploy from GitHub repo**.
+3. Select your `dawud035bot` repo.
+4. Once it's created, go to your service → **Variables** tab.
+5. Add a variable:
+   - Key: `BOT_TOKEN`
+   - Value: *(paste the token from BotFather)*
+6. Railway will auto-detect the `Procfile` and run `python bot.py` as a **worker** process.
+7. Go to **Settings** and make sure the service has a start command matching the Procfile (Railway usually does this automatically).
+8. Deploy. Check the **Logs** tab — you should see `Bot started polling...`.
+
+## 4. Test it
+
+Open Telegram, search `@dawud035bot`, hit **Start**, then try:
+- `/shorten https://example.com`
+- Send any photo
+- `/convert png`
+
+## Notes
+
+- This bot uses **polling** (not webhooks), so no public URL/domain is needed — it works out of the box on Railway.
+- Never commit your bot token to GitHub. It's read from the `BOT_TOKEN` environment variable set in Railway.
+- Free tools used: TinyURL API (link shortening) and Pillow (image conversion/compression) — no paid API keys required.
